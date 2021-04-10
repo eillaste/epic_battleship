@@ -1,0 +1,95 @@
+﻿body{
+    overflow-x: hidden;
+}
+img{
+    margin: 0 auto;
+}
+a.arf{
+    background: white!important;
+    color: black!important;
+    width:150px;
+    margin: 0 auto;
+}
+a.arf:hover{
+    background: #0b70dc!important;
+    color:  white!important;
+}
+
+.ship1{
+    width: 30%;
+    opacity: 0.9;
+    margin-top: 300px;
+}
+img.animation1 {
+    position: absolute;
+    animation: mymove 27s infinite linear;
+}
+@keyframes mymove {
+     from {left: -50%;}
+     to {left: 100%;}
+ }
+
+.ship2{
+    width: 25%;
+    opacity: 0.3;
+}
+img.animation2 {
+    position: absolute;
+    animation: mymove2 60s infinite linear;
+}
+@keyframes mymove2 {
+     from {left: 100%;}
+     to {left: -50%;}
+ }
+
+.ship3{
+    width: 30%;
+    opacity: 0.4;
+    margin-top: 67px;
+}
+img.animation3 {
+    position: absolute;
+    animation: mymove3 48s infinite linear;
+}
+@keyframes mymove3 {
+     from {left: 100%;}
+     to {left: -80%;}
+ }
+
+.ship4{
+    width: 30%;
+    opacity: 0.6;
+    margin-top: 200px;
+    animation-timing-function: linear;
+}
+img.animation4 {
+    position: absolute;
+    animation: mymove4 38s infinite linear;
+}
+@keyframes mymove4 {
+     from {left: -150%;}
+     to {left: 100%;}
+ }
+
+.ship5{
+    width: 40%;
+    opacity: 0.9;
+    margin-top: 450px;
+    
+}
+img.animation5 {
+    position: absolute;
+    animation: mymove5 35s infinite;
+}
+@keyframes mymove5 {
+     from {left: -170%;}
+     to {left: 100%;}
+ }
+
+.maintitle{
+    width: 69%;
+}
+.shipgeneral{
+    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.7)));
+
+}

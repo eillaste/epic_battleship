@@ -1,0 +1,62 @@
+﻿body{
+    opacity: 0.85;
+    background-repeat:no-repeat;
+    background-size: 100%;
+}
+table{
+    border: 4px solid black;
+    -webkit-box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.8);
+    box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.8);
+}
+.water {
+    color: white;
+    background: blue;
+}
+.carrier {
+    color: black;
+    background: cyan;
+}
+.battleship {
+    color: black;
+    background: red;
+}
+.submarine {
+    color: black;
+    background: yellow;
+}
+.cruiser {
+    color: black;
+    background: pink;
+}
+.patrol{
+    color: black;
+    background: green;
+}
+.miss{
+    color: white;
+    background: blue;
+}
+.hit{
+    color: white;
+    background: black;
+}                                                                        
+.sunk{
+    color: white;
+    background: darkblue;
+}
+.centeredstyle{
+    margin: 0 auto;
+}
+
+#battle-bg{
+    margin: 0 auto;
+    width: 45%;
+}
+#legend{
+    margin: 0 auto;
+    margin-top: 27px;
+}
+td{
+    width: 50px;
+    height: 50px;
+}

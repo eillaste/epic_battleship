@@ -1,0 +1,20 @@
+﻿input{
+    margin-top: 20px;
+    background-color: lightgoldenrodyellow;
+}
+
+#firstimage{
+    transform: rotate(-2deg);
+    -webkit-box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.8);
+    box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.8);
+}
+#secondimage{
+    margin-top: 20px;
+    transform: rotate(2deg);
+    -webkit-box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.8);
+    box-shadow: 5px 5px 15px -5px rgba(0,0,0,0.8);
+}
+
+.needsmarginleft{
+    margin-left: -105px;
+}

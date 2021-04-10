@@ -1,0 +1,69 @@
+@page
+@model WebApplication.Pages_GameState.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GameState![0].DT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GameState![0].Game!.PlayerA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GameState![0].Game!.PlayerB)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.GameState![0].Json)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GameState![0].Game)
+            </th>
+            <th>
+                GameState
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.GameState!) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game!.PlayerA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game!.PlayerB)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Json)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game!.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-page="../GamePlay/Fight/Index" asp-route-gameid="@item.Game!.Id" asp-route-gamestateid="@item.Id"><b>Continue Game from here</b></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

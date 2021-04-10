@@ -1,0 +1,90 @@
+﻿@page
+@using Domain
+@using GameConsoleUI
+@using Microsoft.EntityFrameworkCore
+@model WebApplication.Pages.GamePlay.Index3
+@{
+    ViewData["Title"] = "Home page";
+}
+@functions{
+
+    public string GetPlayerName(int boardnr)
+    {
+        if (boardnr == 1)
+        {
+            return @Model.nextmovebyplayer2 ? @Model.player2name : @Model.player1name;
+        }
+        return @Model.nextmovebyplayer2 ? @Model.player1name : @Model.player2name;
+    }
+
+}
+
+<link href="~/css/fight.css" rel="stylesheet" type="text/css" />
+
+<div class="text-center">
+    @*<a href="/GamePlay/Fight?gameid=@Model.gid&gamestateid=@(Model.gsid - 1)"><img src="~/img/undo.png" alt="undo" class="undoredo"></a>
+    <a href="/GamePlay/Fight?gameid=@Model.gid&gamestateid=@(Model.gsid + 1)"><img src="~/img/redo.png" alt="redo" class="undoredo"></a>*@
+    <h1><a style="color:#eccf00;" href="/GamePlay/Fight?gameid=@Model.gid&gamestateid=@(Model.gsid - 1)"><<</a>Game @Model.gid : GameState @Model.gsid <a style="color:#eccf00;" href="/GamePlay/Fight?gameid=@Model.gid&gamestateid=@(Model.gsid + 1)">>></a></h1>
+    <img src="~/img/bg3.png" id="battle-bg" alt="Epic Battleship">
+    @if (@Model.GameOver)
+    {
+        <h1>GAME OVER!</h1>
+        <p>@(Model.nextmovebyplayer2 ? Model.player1name : Model.player2name) Wins!</p>
+    }
+    <div class="row">
+        <div class="col-4 text-center centeredstyle">
+            <table class="table table-bordered">
+                @for (var y = 0; y < @Model.width; y++)
+                {
+
+                    <tr>
+                        @for (var x = 0; x < @Model.height; x++)
+                        {
+                            @if (@Model.GameOver)
+                            {
+                            <td y="@y" x="@x" title="BOMB @y @x">
+
+                                @BattleShipConsoleUi.CellString(Model.b1[x, y], true)
+                            </td>
+                            }
+                            else
+                            {
+                                <td y="@y" x="@x" onclick="window.location.href = '?gameid=@Model.gid&gamestateid=@(Model.gsid + 1)&x=@x&y=@y'" style="cursor: pointer" title="BOMB @y @x">
+
+                                    @BattleShipConsoleUi.CellString(Model.b1[x, y], true)
+                                </td>
+                            }
+
+
+                        }
+                    </tr>
+                }
+            </table>
+            <h3>@GetPlayerName(1)</h3>
+        </div>
+        <div class="col-4 text-center centeredstyle">
+            <table class="table table-bordered">
+                @for (var y = 0; y < @Model.width; y++)
+                {
+
+                    <tr>
+                        @for (var x = 0; x < @Model.height; x++)
+                        {
+                            <td>
+                                @BattleShipConsoleUi.CellString(Model.b2[x, y], false)
+                            </td>
+                        }
+                    </tr>
+                }
+            </table>
+            <h3>@GetPlayerName(2)</h3>
+        </div>
+        <script>
+    console.log("definitely works");
+ 
+    </script>
+        
+    </div>
+    <img src="~/img/legend.png" id="legend"/>
+</div>
+<script src="~/js/fight.js"></script> 

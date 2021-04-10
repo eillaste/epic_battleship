@@ -1,0 +1,86 @@
+﻿@page
+@using Domain
+@using GameConsoleUI
+@using Microsoft.CodeAnalysis.FlowAnalysis
+@using ConsoleApp
+@model WebApplication.Pages.GamePlay.Index2
+@{
+    ViewData["Title"] = "Home page";
+}
+@functions{
+
+    char[] Letters =
+        {
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V'
+        };
+
+    public int shipsize(IList<ECellState> ships, int n)
+    {
+        return (int) ships[n];
+    }
+
+    public char charToLower(char character)
+    {
+        return Char.ToLower(character);
+    }
+
+    public string getImageSource(ECellState type)
+    {
+        return type.ToString().ToLower() + ".png";
+    }
+    
+}
+<link href="~/css/setup.css" rel="stylesheet" type="text/css" />
+
+<div class="text-center">
+    <div class="row">
+        <div class="col-4 text-center p1">
+            <h3>Place ships!</h3>
+            <form method="post">
+                <div id="p1">
+                    @for (var i = 0; i < @Model.ships1.Count; i++)
+                    {
+                        <img src="~/img/@getImageSource(@Model.ships1[i])">
+                        <div class="form-group">
+                            <label class="control-label">Player 1, Please enter placement coordinates for <b>@Model.ships1[i]</b> in format start-end as in @charToLower(Letters[i])1-@charToLower(Letters[i])<label>@shipsize(Model.ships1, i)</label></label>
+                            <input name="@Model.ships1[i]_A" minlength="5" maxlength="7" required onblur="logInput(this)">
+                        </div>
+                    }
+                </div>
+                <div class="p2">
+                    @for (var i = 0; i < @Model.ships2.Count; i++)
+                    {
+                        <img src="~/img/@getImageSource(@Model.ships1[i])">
+                        <div class="form-group">
+                            <label class="control-label">Player 2, Please enter placement coordinates for <b>@Model.ships2[i]</b> in format start-end as in @charToLower(Letters[i])1-@charToLower(Letters[i])<label>@shipsize(Model.ships1, i)</label></label>
+                            <input name="@Model.ships2[i]_B" minlength="5" maxlength="7" required onblur="logInput(this)">
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <button onclick="toggler()" class="btn btn-primary " id="p4" >Confirm Player 1</button>
+                    <input type="submit" value="Confirm Player 2" class="btn btn-primary p2"/>
+                </div>
+            </form>
+        </div>
+        <div class="col-4 text-center">
+            <table class="table table-bordered">
+                @for (var y = 0; y < @Model.y; y++)
+                {
+                    <tr>
+                        @for (var x = 0; x < @Model.x; x++)
+                        {
+                            <td id="@charToLower(@Letters[x])@(y+1)">
+                                @Letters[x]@(y+1)
+                            </td>
+                        }
+                    </tr>
+                }
+            </table> 
+            <img src="~/img/nz.png" id="firstimage">
+            <img src="~/img/bw.png" id="secondimage">
+        </div>
+        <br>
+    </div>
+</div>
+<script src="~/js/setup.js"></script> 
